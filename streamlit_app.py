@@ -303,6 +303,26 @@ def round_to_nearest_thousand(number):
   formatted_number = f"{rounded_number:,}"
   return formatted_number
 
+def check_openai_key(api_key):
+    try:
+        # Set the API key
+        openai.api_key = api_key
+
+        # Make a simple request to the OpenAI API (e.g., list models)
+        openai.Model.list()
+
+        # If the request is successful, the key is valid
+        print("API key is valid.")
+        return True
+
+    except openai.AuthenticationError:
+        print("API key is invalid.")
+        return False
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return False
+
 #if not check_password():
 #    st.stop()  # Do not continue if check_password is not True.
 
@@ -332,10 +352,12 @@ selected_option = "A"
 
 #to obtain API key
 #load_dotenv()
-#API_KEY = os.environ.get('API_KEY')
 API_KEY = st.text_input("Please enter your API Key")
-client = OpenAI(api_key=API_KEY)
 
+if not check_openai_key(API_KEY):
+    st.warning("Please enter a valid API Key")
+
+client = OpenAI(api_key=API_KEY)
 #AOR Document Processing
 #doc = docx.Document("AOR_Sample_Desen.docx")
 #Evaluation document Processing Excel
