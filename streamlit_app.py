@@ -303,8 +303,8 @@ def round_to_nearest_thousand(number):
   formatted_number = f"{rounded_number:,}"
   return formatted_number
 
-if not check_password():
-    st.stop()  # Do not continue if check_password is not True.
+#if not check_password():
+#    st.stop()  # Do not continue if check_password is not True.
 
 #instructions for the app
 st.title("Welcome to the LeverAIge Award Recommendation Assistant!🤖")
@@ -314,7 +314,6 @@ st.sidebar.write("This app will help you create a new draft of an Award Recommen
 st.sidebar.title("Instructions:")
 instructions = [
     "Upload Documents: Drag and drop or click the \"Upload Documents\" button to select the three required documents.",
-    "Input a file name",
     "Let GenAI do the work, and your draft Award Recommendation is completed!"
 ]
 
@@ -346,9 +345,7 @@ upload_doc = st.file_uploader("Upload your approved Approval of Requirement (AOR
 upload_pdf= st.file_uploader("Upload your GeBIZ Summary of Offer here. This document should indicate the summary of prices offered by tenderers.", type="pdf",key="file_uploader_2")
 upload_excel = st.file_uploader("Uploade your Detailed Evaluation Report here. This document should contain the evaluation results for each offer, including PQ score and brief assessment., including scores and comments.", type="xlsx", key="file_uploader_3")
 
-output_file = st.text_input("Please input a file name for the new document")
-
-if st.button("Process Now!") and upload_excel is not None and upload_doc is not None and upload_pdf is not None and output_file is not None:
+if st.button("Process Now!") and upload_excel is not None and upload_doc is not None and upload_pdf is not None:
     
     with st.spinner('Loading...'):
         docx_bytes = upload_doc.read()
@@ -1088,7 +1085,17 @@ if st.button("Process Now!") and upload_excel is not None and upload_doc is not 
 
         #finally save the document
         output_file = output_file + ".docx"
+        output_file = "ouputfile.docx"
         document.save(output_file)
-        st.success("Documents merged and saved successfully!")
+        st.success("Documents merged and saved successfully!Click the Button Below to download it.")
+
+        # Download the saved document
+        with open(output_file, "rb") as f:
+            st.download_button(
+                label="Download Processed Document",
+                data=f.read(),
+                file_name="processed_document.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
 else:
     st.warning("Please upload all documents.")
