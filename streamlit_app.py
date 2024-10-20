@@ -1084,7 +1084,6 @@ if st.button("Process Now!") and upload_excel is not None and upload_doc is not 
             run.font.size = Pt(12)   # Optional: Change font size
 
         #finally save the document
-        output_file = output_file + ".docx"
         output_file = "ouputfile.docx"
         document.save(output_file)
         st.success("Documents merged and saved successfully!Click the Button Below to download it.")
