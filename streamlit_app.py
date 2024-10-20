@@ -352,10 +352,11 @@ selected_option = "A"
 
 #to obtain API key
 #load_dotenv()
-API_KEY = st.text_input("Please enter your API Key")
+API_KEY = st.text_input("Please input your OpenAI API Key", type="password")
 
-if not check_openai_key(API_KEY):
+if not API_KEY.startswith('sk-'):
     st.warning("Please enter a valid API Key")
+    st.stop()
 
 client = OpenAI(api_key=API_KEY)
 #AOR Document Processing
