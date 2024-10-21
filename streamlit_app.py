@@ -355,12 +355,7 @@ def processing_doc():
         st.warning("Please enter a valid API Key")
 
     client = OpenAI(api_key=API_KEY)
-
-    #AOR Document Processing
-    #doc = docx.Document("AOR_Sample_Desen.docx")
-    #Evaluation document Processing Excel
-    #data = read_excel_data('Detailed Eval Report_Desen.xlsx')
-
+    
     upload_doc = st.file_uploader("Upload your approved Approval of Requirement (AOR) here. This document should include information on your requirement", type="docx",key="file_uploader_1")
     upload_pdf= st.file_uploader("Upload your GeBIZ Summary of Offer here. This document should indicate the summary of prices offered by tenderers.", type="pdf",key="file_uploader_2")
     upload_excel = st.file_uploader("Uploade your Detailed Evaluation Report here. This document should contain the evaluation results for each offer, including PQ score and brief assessment., including scores and comments.", type="xlsx", key="file_uploader_3")
