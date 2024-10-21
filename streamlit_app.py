@@ -343,7 +343,9 @@ for i, instruction in enumerate(instructions, start=1):
 st.sidebar.title("Contact us:")
 st.sidebar.write("Please reach out to us at XXX if you have any queries.")
 st.sidebar.write("Made for the CPF Community by Barry Ng, Hazel Ong and Lee Puay Tiang📱")
-
+st.sidebar.write("IMPORTANT NOTICE: This web application is developed as a proof-of-concept prototype. The information provided here is NOT intended for actual usage and should not be relied upon for making any decisions, especially those related to financial, legal, or healthcare matters.")
+st.sidebar.write("Furthermore, please be aware that the LLM may generate inaccurate or incorrect information. You assume full responsibility for how you use any generated output.")
+st.sidebar.write("Always consult with qualified professionals for accurate and personalized advice.")
 #options = ['A', 'B', 'C']
 #selected_option = st.selectbox('Select a Tender Board', options)
 selected_option = "A"
