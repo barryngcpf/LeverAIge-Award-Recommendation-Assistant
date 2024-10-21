@@ -15,6 +15,7 @@ from docx.oxml.ns import nsdecls
 from docx.enum.style import WD_STYLE_TYPE
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import RGBColor
+from dotenv import load_dotenv
 
 def extract_paragraphs_by_header(source_document, target_document,header_style, target_words):
     extracted_paragraphs = []
@@ -346,7 +347,8 @@ def processing_doc():
 
     for i, instruction in enumerate(instructions, start=1):
         st.sidebar.markdown(f"{i}. {instruction}")
-
+    #to obtain API key
+    load_dotenv()
     #API_KEY = os.environ.get('API_KEY')
     API_KEY = st.text_input("Please input your OpenAI API Key", type="password")
 
@@ -354,6 +356,11 @@ def processing_doc():
         st.warning("Please enter a valid API Key")
 
     client = OpenAI(api_key=API_KEY)
+
+    #AOR Document Processing
+    #doc = docx.Document("AOR_Sample_Desen.docx")
+    #Evaluation document Processing Excel
+    #data = read_excel_data('Detailed Eval Report_Desen.xlsx')
 
     upload_doc = st.file_uploader("Upload your approved Approval of Requirement (AOR) here. This document should include information on your requirement", type="docx",key="file_uploader_1")
     upload_pdf= st.file_uploader("Upload your GeBIZ Summary of Offer here. This document should indicate the summary of prices offered by tenderers.", type="pdf",key="file_uploader_2")
@@ -1125,6 +1132,8 @@ page_names_to_funcs = {
 
 demo_name = st.sidebar.selectbox("Select an Option", page_names_to_funcs.keys())
 page_names_to_funcs[demo_name]()
+
+
 
 st.sidebar.title("Created by:")
 st.sidebar.write("Barry Ng, Hazel Ong and Lee Puay Tiang📱")
