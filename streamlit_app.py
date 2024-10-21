@@ -347,11 +347,7 @@ st.sidebar.title("Important Notice:")
 st.sidebar.write("This web application is developed as a proof-of-concept prototype. The information provided here is NOT intended for actual usage and should not be relied upon for making any decisions, especially those related to financial, legal, or healthcare matters.")
 st.sidebar.write("Furthermore, please be aware that the LLM may generate inaccurate or incorrect information. You assume full responsibility for how you use any generated output.")
 st.sidebar.write("Always consult with qualified professionals for accurate and personalized advice.")
-#options = ['A', 'B', 'C']
-#selected_option = st.selectbox('Select a Tender Board', options)
 selected_option = "A"
-
-#documents = load_documents()
 
 #to obtain API key
 #load_dotenv()
