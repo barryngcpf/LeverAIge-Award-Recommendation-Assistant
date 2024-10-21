@@ -347,8 +347,7 @@ def processing_doc():
 
     for i, instruction in enumerate(instructions, start=1):
         st.sidebar.markdown(f"{i}. {instruction}")
-    #to obtain API key
-    load_dotenv()
+
     #API_KEY = os.environ.get('API_KEY')
     API_KEY = st.text_input("Please input your OpenAI API Key", type="password")
 
